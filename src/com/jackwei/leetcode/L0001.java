@@ -1,6 +1,8 @@
 package com.jackwei.leetcode;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 作者：Jack魏
@@ -15,22 +17,25 @@ import java.util.Arrays;
  */
 public class L0001 {
     public static void main(String[] args) {
-        int nums[] = new int[]{2, 7, 11, 15};
-        int target = 9;
+        int nums[] = new int[]{3,3,4};
+        int target = 6;
         System.out.println(Arrays.toString(new L0001().twoSum(nums, target)));
     }
 
     public int[] twoSum(int[] nums, int target) {
-        int max = 2047;
-        int[] res = new int[max + 1];
-
-        for (int i = 0; i < nums.length; i++) {
-            int ldiff = (target - nums[i]) & max;
-            if (res[ldiff] != 0) {
-                return new int[]{res[ldiff] - 1, i};
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i=0; i<nums.length; i++){
+            //当两个数相同，并且和为target时返回下标
+            if (map.containsKey(nums[i]) && target-nums[i] == nums[i]){
+                return new int[]{map.get(nums[i]), i};
             }
-            res[nums[i] & max] = i + 1;
+            //不满足条件，继续添加到map中，去重
+            map.put(nums[i], i);
+            //判断是否有map里面正好是target的差，并且当前下标没出现在map里面
+            if (map.containsKey(target - nums[i]) && i != map.get(target - nums[i]) ){
+                return new int[]{map.get(target - nums[i]), i};
+            }
         }
-        return new int[2];
+        return new int[]{};
     }
 }
