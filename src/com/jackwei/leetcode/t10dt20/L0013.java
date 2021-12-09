@@ -1,4 +1,4 @@
-package com.jackwei.leetcode;
+package com.jackwei.leetcode.t10dt20;
 
 import java.util.HashMap;
 import java.util.Map;

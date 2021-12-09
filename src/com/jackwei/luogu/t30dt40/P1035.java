@@ -1,4 +1,4 @@
-package com.jackwei.luogu;
+package com.jackwei.luogu.t30dt40;
 
 import java.util.Scanner;
 

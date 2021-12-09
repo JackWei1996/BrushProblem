@@ -1,4 +1,4 @@
-package com.jackwei.luogu;
+package com.jackwei.luogu.t1dt10;
 
 import java.util.Scanner;
 
